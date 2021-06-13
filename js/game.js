@@ -56,7 +56,7 @@
 
         // take the picture
         const getPicture = () => {
-
+                shuffle(puzzle);
                 imageCapture.takePhoto()
                         .then((img) => {
                                 image.src = URL.createObjectURL(img);
@@ -96,5 +96,14 @@
                         marker.appendChild(aImg);
                 })
 
+        }
+
+        const shuffle = randomArray => {
+                for(let i=randomArray.length -1; i>0; i--){
+                        // random from 0 to i
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [randomArray[i], randomArray[j]] = [randomArray[j], randomArray[i]];
+                } 
+                return randomArray;
         }
 }
